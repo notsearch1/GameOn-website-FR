@@ -516,7 +516,7 @@ input[data-error]::after {
    }
    .bground{
      background-color: transparent;
-     margin-top: 50px;
+     margin-top: 65px;
    }
    .content{
      width: 100%;
@@ -560,6 +560,7 @@ input[data-error]::after {
     background-color: transparent; 
   }
   .navlist{
+    z-index:5;
     display: none;
     width: 100%;
     margin-top:20px;
