@@ -10,6 +10,7 @@ const formData=document.querySelectorAll('.formData');//DIV CONTENANT CHAQUE INP
 const fields= document.querySelectorAll('input[required]');//INPUT AVEC ATTRIBUT REQUIRED
 const birthdate=document.getElementById('birthdate');// INPUT BIRTHDATE
 const birthdateError= document.getElementById('birthdateError');//SPAN ERROR INPUT BIRTHDATE
+const heroImg = document.querySelector('.hero-img');
 
 i=1;//COMPTEUR POUR ITERER LES INPUTS
 
@@ -23,12 +24,15 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // ouverture de la modal formulaire
 function launchModal() {
     modalbg.style.display = "block";
+    heroImg.style.display = "none";
 }
 
 // fonction pour fermer la modal formulaire avec la croix
 closeBtn.addEventListener("click", closeModal);
 function closeModal(){
     modalbg.style.display= "none";
+    heroImg.style.display = "flex";
+  
 }
 
 // fonction validation de formulaire
@@ -73,6 +77,8 @@ function validate(event){
   //récupération de la date du jour
         let date = new Date()
         let birthdateValue= birthdate.value;
+        console.log(birthdateValue)
+        console.log(date)
         let month='' + (date.getMonth() + 1);
         let day= '' + date.getDate();
         let year= date.getFullYear();
@@ -81,7 +87,8 @@ function validate(event){
               month = '0' + month;
         if (day.length < 2) 
               day = '0' + day;
-        let dateFormatValid= [year, month, day].join('-')
+        let dateFormatValid= [year, month, day].join('-');
+        console.log(dateFormatValid)
 
   // si > ajoute la classe invalid et met un message d'erreur
       if(birthdateValue > dateFormatValid){
