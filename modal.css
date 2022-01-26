@@ -70,7 +70,6 @@ main {
   color: black;
   padding-top: 0.5vw;
   border-radius: 2rem;
-  text-align: justify;
 }
 
 .modal-btn {
@@ -524,16 +523,12 @@ input[data-error]::after {
      background-color: transparent;
      margin-top: 65px;
    }
-   .background2{
 
-   }
    .content, .content2{
      width: 100%;
      border-radius:0;
    }
-   content2{
-
-   }
+ 
    .hero-img img {
      max-height: 300px;
      border-radius: 10px;
@@ -570,6 +565,8 @@ input[data-error]::after {
   }
   .topnav a:hover, .topnav a.active {
     background-color: transparent; 
+    color:#fff;
+    
   }
   .navlist{
     z-index:5;
@@ -577,10 +574,10 @@ input[data-error]::after {
     width: 100%;
     margin-top:20px;
   }
-  .navlist .navlist-items:hover{
+  .navlist .navlist-items:hover, .navlist .navlist-items .active{
     background-color: red;
-    color:#fff;
   }
+
   .navlist .navlist-items{
     display:block;
     padding:10px 0;

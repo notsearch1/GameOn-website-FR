@@ -8,6 +8,8 @@ const formulaire = document.getElementById('formulaire');//FORMULAIRE
 const btnSubmit = document.getElementById('btnSubmit');//BOUTON ENVOIE FORMULAIRE
 const formData=document.querySelectorAll('.formData');//DIV CONTENANT CHAQUE INPUT
 const fields= document.querySelectorAll('input[required]');//INPUT AVEC ATTRIBUT REQUIRED
+const birthdate=document.getElementById('birthdate');// INPUT BIRTHDATE
+const birthdateError= document.getElementById('birthdateError');//SPAN ERROR INPUT BIRTHDATE
 
 i=1;//COMPTEUR POUR ITERER LES INPUTS
 
@@ -30,17 +32,12 @@ function closeModal(){
 }
 
 // fonction validation de formulaire
-
-
-
 function validate(event){
     valid = true;
     event.preventDefault;
 
-
     //trouver chaque champs input required
     fields.forEach((field, i)=>{
-        // si le champs n'est pas valide renvoie faux
         if(!validateField(field, i)){
             i++
             valid=false
@@ -53,18 +50,45 @@ function validate(event){
           return false;
         }
   }
-
-// fonction qui vérifie chaque champas du formulaire
-function validateField(field, i){
-  // si le champ est valide retire la classe invalid et supprime le text dans le span
+  
+  // fonction qui vérifie chaque champs du formulaire et gère messages d'erreur
+  function validateField(field, i){
+    // si le champ est valide retire la classe invalid et supprime le text dans le span
     if(field.checkValidity()){
         field.classList.remove('invalid');
         formData[i].lastElementChild.innerHTML= " ";
+
+        verifBirthdate();
         return true;
     }else{
-        //si le champ n'est pas valide ajoute la classe invalid et insere le message prévu par le navigateur en cas d'erreur dans le span
-        field.classList.add('invalid');
-        formData[i].lastElementChild.innerHTML=field.validationMessage;
-        return false;
+      //si le champ n'est pas valide ajoute la classe invalid et insere le message prévu par le navigateur en cas d'erreur dans le span
+      field.classList.add('invalid');
+      formData[i].lastElementChild.innerHTML=field.validationMessage;
+      return false;
     };
-}
+  }
+
+  //fonction qui vérifie que la date de naissance saisie est sup à la date du jour
+  function verifBirthdate(){
+  //récupération de la date du jour
+        let date = new Date()
+        let birthdateValue= birthdate.value;
+        let month='' + (date.getMonth() + 1);
+        let day= '' + date.getDate();
+        let year= date.getFullYear();
+        
+        if (month.length < 2) 
+              month = '0' + month;
+        if (day.length < 2) 
+              day = '0' + day;
+        let dateFormatValid= [year, month, day].join('-')
+
+  // si > ajoute la classe invalid et met un message d'erreur
+      if(birthdateValue > dateFormatValid){
+          birthdate.classList.add('invalid');
+          birthdateError.innerHTML="Le date de naissance doit être inférieure à la date du jour";
+          return false;
+      }else{
+          return true;
+    }}
+  

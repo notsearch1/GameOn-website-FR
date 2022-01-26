@@ -26,7 +26,7 @@
           </a>
           </li>
           <li class="navlist-items">
-            <a href="#">
+            <a href="#"> 
               Contact
           </a>
           </li>
@@ -93,7 +93,7 @@
               <div class="formData">
                 <label for="birthdate">Date de naissance</label>
                 <input class="text-control" type="date" id="birthdate" name="birthdate" required/>
-                <span class="errorMsg"></span>
+                <span id="birthdateError" class="errorMsg"></span>
               </div>
               <div class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
@@ -139,9 +139,10 @@
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
-              <span class="errorMsg"></span>  
-              <input class="btn-submit button" type="submit" id="btnSubmit" value="C'est parti"/> 
+                 <span class="errorMsg"></span> 
               </div>
+              <input class="btn-submit button" type="submit" id="btnSubmit" value="C'est parti"/> 
+              
             </form>
           </div>
         </div>  
